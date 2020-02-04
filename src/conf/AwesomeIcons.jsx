@@ -57,7 +57,8 @@ import {
   faAngleDoubleLeft,
   faSortAlphaDown,
   faSortAlphaUp,
-  faSortAlphaUpAlt
+  faSortAlphaUpAlt,
+  faTh
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -75,8 +76,14 @@ import {
   faSave
 } from '@fortawesome/free-regular-svg-icons';
 
+import { faCss3Alt } from '@fortawesome/free-brands-svg-icons';
+
 export const AwesomeIcons = icon => {
   switch (icon) {
+    case 'css3':
+      return faCss3Alt;
+    case 'flexbox':
+      return faTh;
     case 'pdf':
       return faFilePdf;
     case 'xls':

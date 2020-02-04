@@ -1,0 +1,10 @@
+.topicWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.topicWrapper div {
+  flex: auto;
+  margin-right: auto;
+}

@@ -9,14 +9,22 @@
 
 .title {
   display: table-cell;
-  font-size: 1.25rem;
+  font-size: 2.25rem;
   color: white;
   margin: 0px;
   font-weight: bold;
 }
 
+.subtitle {
+  font-size: 1.3rem;
+  color: yellowgreen;
+  margin: 0px;
+  font-weight: 400;
+}
+
 .icon {
   color: white;
-  opacity: 0.6;
+  font-size: 4rem;
   margin-right: 0.5rem !important;
+  margin-top: 10px;
 }
