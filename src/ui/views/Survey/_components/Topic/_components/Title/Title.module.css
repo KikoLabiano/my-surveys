@@ -1,0 +1,22 @@
+.titleWrap {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0rem 0rem 2rem 0rem;
+  padding: 2rem 0 0 0;
+}
+
+.title {
+  display: table-cell;
+  font-size: 1.25rem;
+  color: white;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.icon {
+  color: white;
+  opacity: 0.6;
+  margin-right: 0.5rem !important;
+}
