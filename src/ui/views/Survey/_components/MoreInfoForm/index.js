@@ -1,0 +1,1 @@
+export { MoreInfoForm } from './MoreInfoForm';

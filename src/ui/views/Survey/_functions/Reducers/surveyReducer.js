@@ -6,6 +6,8 @@ export const surveyReducer = (state, { type, payload }) => {
       topic[payload.property] = payload.value;
       inmTopics[payload.topicId] = topic;
       return { ...state, topics: inmTopics };
+    case 'UPDATE_SURVEY_DEVELOPER_INFO':
+      return { ...state, [payload.property]: payload.value };
     case 'SET_INITIAL_TOPICS':
       return {
         ...state,
@@ -13,6 +15,8 @@ export const surveyReducer = (state, { type, payload }) => {
           return { id: topic.id, selectedOption: '', additionalInfo: '', name: topic.name, subtopic: topic.subtopic };
         })
       };
+    case 'TOGGLE_SENDING':
+      return { ...state, sendingEmail: payload.sending };
     case 'NEXT_TOPIC':
       return { ...state, currentTopicIdx: state.currentTopicIdx + 1 };
     case 'PREVIOUS_TOPIC':

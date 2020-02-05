@@ -59,7 +59,11 @@ import {
   faSortAlphaUp,
   faSortAlphaUpAlt,
   faTh,
-  faAngleLeft
+  faAngleLeft,
+  faDumbbell,
+  faChalkboardTeacher,
+  faEnvelope,
+  faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -77,7 +81,7 @@ import {
   faSave
 } from '@fortawesome/free-regular-svg-icons';
 
-import { faCss3Alt } from '@fortawesome/free-brands-svg-icons';
+import { faCss3Alt, faJsSquare, faReact, faGitSquare } from '@fortawesome/free-brands-svg-icons';
 
 export const AwesomeIcons = icon => {
   switch (icon) {
@@ -85,6 +89,20 @@ export const AwesomeIcons = icon => {
       return faCss3Alt;
     case 'flexbox':
       return faTh;
+    case 'javascript':
+      return faJsSquare;
+    case 'react':
+      return faReact;
+    case 'solid':
+      return faDumbbell;
+    case 'git':
+      return faGitSquare;
+    case 'scrum':
+      return faChalkboardTeacher;
+    case 'envelope':
+      return faEnvelope;
+    case 'check':
+      return faCheck;
     case 'pdf':
       return faFilePdf;
     case 'xls':

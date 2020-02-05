@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './Title.module.css';
 
 const Title = ({ icon, title, subtitle }) => {
-  console.log({ icon });
   return (
     <div className={styles.titleWrap}>
       <FontAwesomeIcon className={styles.icon} icon={AwesomeIcons(icon)} />

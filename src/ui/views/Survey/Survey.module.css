@@ -1,11 +1,11 @@
-.buttonsWrapper{
-    display:flex;
-    justify-content: space-between;
+.buttonsWrapper {
+  /* display:flex;
+    justify-content: space-between; */
 }
 
 .buttonsWrapper input:last-child {
-    margin-left: auto;
-  }
+  margin-left: auto;
+}
 
 .topicWrapper {
   transition: 0.2s ease-in-out;

@@ -20,6 +20,16 @@
   color: yellowgreen;
   margin: 0px;
   font-weight: 400;
+  margin-right: auto;
+}
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.textWrap h1 {
+  margin-right: auto;
 }
 
 .icon {

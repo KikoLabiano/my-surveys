@@ -1,0 +1,65 @@
+.emailSended {
+  font-size: 7rem;
+  color: yellowgreen;
+  -webkit-animation: flyinleftanim 0.75s ease, flyinrightanim 0.75s ease;
+  -webkit-animation-delay: 0s, 1s;
+  animation-fill-mode: forwards;
+}
+
+.emailSendedMessage {
+  opacity: 0;
+  animation: show 0.5s;
+  -webkit-animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+.emailSendedIcon {
+  opacity: 0;
+  font-size: 9rem;
+  margin-right: 7rem;
+  color: yellowgreen;
+  margin-top: 2rem;
+  animation: show 0.5s;
+  -webkit-animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes flyinleftanim {
+  0% {
+    -webkit-transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(7rem);
+    opacity: 1;
+  }
+}
+
+@keyframes flyinrightanim {
+  0% {
+    -webkit-transform: translateX(21rem);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(1000px);
+    opacity: 0;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
