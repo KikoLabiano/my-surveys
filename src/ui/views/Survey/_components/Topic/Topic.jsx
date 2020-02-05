@@ -33,12 +33,14 @@ const Topic = ({
   const renderMoreInfo = () => {
     return (
       <InputTextarea
-        rows={5}
+        autoResize={true}
         cols={60}
         onChange={e => {
           setAdditionalInfo(e.target.value);
           onChangeSurveyValue(id, 'additionalInfo', e.target.value);
         }}
+        rows={5}
+        style={{ maxHeight: '30%' }}
         value={additionalInfo}
       />
     );
