@@ -259,6 +259,7 @@ const Survey = withRouter(({ match: { params }, history }) => {
         )
         .join('')}</ul><br/>
       <b>Selected option:</b> ${topic.selectedOption}<br/>
+      <b>Additional info:</b> ${topic.additionalInfo}<br/>
       <hr/>`;
       })
       .join('')}
