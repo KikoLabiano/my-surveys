@@ -1,13 +1,11 @@
-.topicOptionsWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.buttonsWrapper{
+    display:flex;
+    justify-content: space-between;
 }
 
-.topicOptionsWrapper div {
-  flex: auto;
-  margin-right: auto;
-}
+.buttonsWrapper input:last-child {
+    margin-left: auto;
+  }
 
 .topicWrapper {
   transition: 0.2s ease-in-out;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styles from './Topic.module.css';
 
@@ -18,19 +18,45 @@ const Topic = ({
     'Lo entiendo bastante bien',
     'Soy el/la amo/ama'
   ],
-  subtopic
+  subtopic,
+  topicSelectedOption,
+  topicAdditionalInfo
 }) => {
-  console.log(icon);
+  const [selectedOption, setSelectedOption] = useState(topicSelectedOption);
+  const [additionalInfo, setAdditionalInfo] = useState(topicAdditionalInfo);
+
+  useEffect(() => {
+    setSelectedOption(topicSelectedOption);
+    setAdditionalInfo(topicAdditionalInfo);
+  }, [topicSelectedOption, topicAdditionalInfo]);
 
   const renderMoreInfo = () => {
-    return <InputTextarea rows={5} cols={60} />;
-    // value={state.value} onChange={(e) => this.setState({value: e.target.value})} />
+    return (
+      <InputTextarea
+        rows={5}
+        cols={60}
+        onChange={e => {
+          setAdditionalInfo(e.target.value);
+          onChangeSurveyValue(id, 'additionalInfo', e.target.value);
+        }}
+        value={additionalInfo}
+      />
+    );
   };
 
   const renderOptions = () => {
     return options.map((option, i) => (
       <div>
-        <RadioButton inputId={i} name={name} value={option} onChange={e => {}}></RadioButton>
+        <RadioButton
+          checked={selectedOption === option}
+          inputId={i}
+          name={name}
+          value={option}
+          onChange={e => {
+            setSelectedOption(e.target.value);
+            onChangeSurveyValue(id, 'selectedOption', e.target.value);
+          }}
+        />
         <label htmlFor={i} className="p-radiobutton-label">
           {option}
         </label>
@@ -41,14 +67,14 @@ const Topic = ({
   return (
     <div>
       <Title title={name} icon={icon} subtitle={subtopic} />
-      <div className={styles.topicWrapper}>{renderOptions()}</div>
-      <h3>
+      <div className={styles.topicOptionsWrapper}>{renderOptions()}</div>
+      <h5>
         ¿Algo más que añadir?{' '}
         <a href={'https://dle.rae.es/explayar'} target={'_blank'}>
           Expláyate
         </a>{' '}
         a gusto.
-      </h3>
+      </h5>
       {renderMoreInfo()}
     </div>
   );
