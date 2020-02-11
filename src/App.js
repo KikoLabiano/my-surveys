@@ -6,6 +6,7 @@ import { routes } from 'ui/routes';
 
 import { Survey } from './ui/views/Survey';
 import { SurveySended } from './ui/views/SurveySended';
+import { SurveyResults } from './ui/views/SurveyResults';
 
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -22,6 +23,7 @@ function App() {
           <Switch>
             <Route exact path={routes.ACCESS_POINT} component={Survey} />
             <Route exact path={routes.SURVEY_SENDED} component={SurveySended} />
+            <Route exact path={routes.SURVEY_RESULTS} component={SurveyResults} />
           </Switch>
         </Router>
       </header>
