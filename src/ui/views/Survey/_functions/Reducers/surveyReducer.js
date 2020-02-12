@@ -13,6 +13,9 @@ export const surveyReducer = (state, { type, payload }) => {
         ...state,
         topics: payload.allTheTopics.map(topic => {
           return { id: topic.id, selectedOption: '', additionalInfo: '', name: topic.name, subtopic: topic.subtopic };
+        }),
+        allTheTopics: payload.allTheTopics.map(topic => {
+          return { id: topic.id, name: topic.name, options: topic.options, icon: topic.icon, subtopic: topic.subtopic };
         })
       };
     case 'TOGGLE_SENDING':
