@@ -167,14 +167,14 @@ const SurveyResults = withRouter(() => {
         </p>
 
         <p style={{ fontSize: '12pt' }}>
-          {allTheTopics[i].options[Math.floor(average)]} - {allTheTopics[i].options[Math.round(average)]}
+          {allTheTopics[i].options[Math.floor(average) - 1]} - {allTheTopics[i].options[Math.round(average) - 1]}
         </p>
       </div>
     ));
   };
 
   return (
-    <div>
+    <div style={{ marginLeft: '4rem' }}>
       {/* <FontAwesomeIcon className={styles.emailSended} icon={AwesomeIcons('envelope')} />
       <FontAwesomeIcon className={styles.emailSendedIcon} icon={AwesomeIcons('check')} /> */}
       <Chart type="radar" data={data} height={'1000px'} options={options} width={'1000px'} />
