@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { AwesomeIcons } from 'conf/AwesomeIcons';
 import { Chart } from 'primereact/chart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { TopicService } from 'core/services/Topic';
+
 const SurveyResults = withRouter(() => {
+  const [allTheTopics, setAllTheTopics] = useState();
+
+  useEffect(() => {
+    onLoadTopics();
+  }, []);
+
+  const onLoadTopics = async () => {
+    const response = await TopicService.getAll();
+    setAllTheTopics(response);
+  };
+
   const options = {
     legend: {
       labels: {
@@ -23,7 +36,8 @@ const SurveyResults = withRouter(() => {
       },
       ticks: {
         suggestedMin: 0,
-        suggestedMax: 5
+        suggestedMax: 5,
+        stepSize: 1
       },
       gridLines: { color: '#fff' }
     }
@@ -97,7 +111,7 @@ const SurveyResults = withRouter(() => {
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(255,99,132,1)',
-        data: [5, 5, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 1, 3, 3]
+        data: [5, 5, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 4, 1, 3, 3]
       },
       {
         label: 'Developer 6',
@@ -107,7 +121,7 @@ const SurveyResults = withRouter(() => {
         pointBorderColor: '#fff',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(255,99,132,1)',
-        data: [4, 3, 3, 3, 2, 3, 3, 2, 2, 3, 2, 3, 3, 3, 3]
+        data: [4, 3, 3, 3, 2, 3, 3, 2, 2, 3, 2, 3, 3, 3, 3, 3]
       },
       {
         label: 'Developer 7',
@@ -132,11 +146,39 @@ const SurveyResults = withRouter(() => {
     ]
   };
 
+  const calculateAverage = () => {
+    const allData = data.datasets.map(dataset => dataset.data.map(data => data));
+    console.log({ allData });
+    const transposedData = allData[0].map((col, i) => allData.map(row => row[i]));
+    return transposedData.map(topic => {
+      const sum = topic.reduce((a, b) => a + b, 0);
+      const avg = sum / topic.length || 0;
+      return avg;
+    });
+  };
+
+  const renderAverages = () => {
+    const averages = calculateAverage();
+    return averages.map((average, i) => (
+      <div style={{ display: 'flex' }}>
+        <p style={{ fontSize: '12pt' }}>
+          {allTheTopics[i].name} - {allTheTopics[i].subtopic}: {average}
+          {' => '}
+        </p>
+
+        <p style={{ fontSize: '12pt' }}>
+          {allTheTopics[i].options[Math.floor(average)]} - {allTheTopics[i].options[Math.round(average)]}
+        </p>
+      </div>
+    ));
+  };
+
   return (
     <div>
       {/* <FontAwesomeIcon className={styles.emailSended} icon={AwesomeIcons('envelope')} />
       <FontAwesomeIcon className={styles.emailSendedIcon} icon={AwesomeIcons('check')} /> */}
       <Chart type="radar" data={data} height={'1000px'} options={options} width={'1000px'} />
+      <label>{allTheTopics ? renderAverages() : null}</label>
     </div>
   );
 });
