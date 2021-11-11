@@ -38,8 +38,7 @@ const Survey = withRouter(({ match: { params }, history }) => {
   }, []);
 
   const onLoadTopics = async () => {
-    const response = await TopicService.getAll();
-    console.log({ response });
+    const response = await TopicService.getAll();    
     dispatchSurvey({ type: 'SET_INITIAL_TOPICS', payload: { allTheTopics: response } });
   };
 
@@ -293,7 +292,7 @@ const Survey = withRouter(({ match: { params }, history }) => {
       message_html: formatSurvey(surveyState)
     };
     dispatchSurvey({ type: 'TOGGLE_SENDING', payload: { sending: true } });
-    emailjs.send('gmail', 'template_srR2f0wZ', templateParams, 'user_jbFeAE0hpcmCWTYyR9VfD').then(response => {
+    emailjs.send('service_qi7dayo', 'template_srR2f0wZ', templateParams, 'user_jbFeAE0hpcmCWTYyR9VfD').then(response => {
       if (response.status >= 200 && response.status <= 299) {
         dispatchSurvey({ type: 'TOGGLE_SENDING', payload: { sending: false } });
         history.push(routes.SURVEY_SENDED);
@@ -339,7 +338,6 @@ const Survey = withRouter(({ match: { params }, history }) => {
             topicAdditionalInfo={surveyState.topics[surveyState.currentTopicIdx].additionalInfo}
           />
         ) : null}
-        {console.log(surveyState.allTheTopics)}
         {surveyState.allTheTopics.length > 0 && surveyState.currentTopicIdx === surveyState.allTheTopics.length ? (
           <MoreInfoForm
             additionalFinalInfoProp={surveyState.additionalFinalInfo}
